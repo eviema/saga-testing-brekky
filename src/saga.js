@@ -26,7 +26,7 @@ function* fetchUserByIdSaga() {
   yield takeLatest(FETCH_USER_BY_ID, handleFetchUserById);
 }
 
-function* handleFetchUserById({ userId }) {
+export function* handleFetchUserById({ userId }) {
   const {
     userReducer: { currentUserId }
   } = yield select();
