@@ -9,7 +9,7 @@ import {
 } from "./actions";
 import { getUsers, getUserById } from "./api";
 
-function* fetchUsersSaga() {
+export function* fetchUsersSaga() {
   yield takeLatest(FETCH_USERS, handleFetchUsers);
 }
 
@@ -22,7 +22,7 @@ function* handleFetchUsers() {
   }
 }
 
-function* fetchUserByIdSaga() {
+export function* fetchUserByIdSaga() {
   yield takeLatest(FETCH_USER_BY_ID, handleFetchUserById);
 }
 
