@@ -35,8 +35,10 @@ it("fetches user by ID succesfully", () => {
 
   return (
     expectSaga(fetchUserByIdSaga)
+      // Hook mock reducer
       .withReducer(mockReducer)
-      // Assert that the `put` will eventually happen.
+
+      // Mock response values directly with expectSaga
       .provide({
         call({ fn }, next) {
           if (fn === getUserById) {
@@ -46,7 +48,9 @@ it("fetches user by ID succesfully", () => {
         }
       })
 
+      // Assert action type
       .put.actionType(FETCH_USER_BY_ID_SUCCESS)
+
       // Dispatch any actions that the saga will `take`.
       .dispatch({ type: FETCH_USER_BY_ID, userId: "1" })
 
@@ -60,8 +64,10 @@ it("fails to fetch user by ID", () => {
 
   return (
     expectSaga(fetchUserByIdSaga)
+      // Hook mock reducer
       .withReducer(mockReducer)
-      // Assert that the `put` will eventually happen.
+
+      // Mock response values directly with expectSaga
       .provide({
         call({ fn }, next) {
           if (fn === getUserById) {
@@ -71,7 +77,9 @@ it("fails to fetch user by ID", () => {
         }
       })
 
+      // Assert action type
       .put.actionType(FETCH_USER_BY_ID_ERROR)
+
       // Dispatch any actions that the saga will `take`.
       .dispatch({ type: FETCH_USER_BY_ID, userId: "1" })
 
